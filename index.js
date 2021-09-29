@@ -17,4 +17,4 @@ function startSenko(Senko = new Client) {
 
 create(options(true, startSenko))
 .then(Senko => startSenko(Senko))
-.catch((error) => console.log(error))
+.catch((error) => console.log(error));
