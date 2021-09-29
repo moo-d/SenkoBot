@@ -1,0 +1,33 @@
+{
+  "name": "SenkoBot",
+  "version": "0.0.1",
+  "description": "WhatsApp Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moo-d",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@open-wa/wa-automate": "^3.0.16",
+    "@open-wa/wa-decrypt": "^2.0.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moo-d/SenkoBot.git"
+  },
+  "keywords": [
+    "Whatsapp-Bot"
+    "SenkoBot",
+    "Bot-Whatsapp"
+  ],
+  "bugs": {
+    "url": "https://github.com/moo-d/SenkoBot/issues"
+  },
+  "homepage": "https://github.com/moo-d/SenkoBot#readme"
+}
