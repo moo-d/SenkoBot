@@ -14,3 +14,7 @@ function startSenko(Senko = new Client) {
     msgHandler(Senko, message);
   }));
 };
+
+create(options(true, startSenko))
+.then(Senko => startSenko(Senko))
+.catch((error) => console.log(error))
