@@ -3,14 +3,14 @@ let options = require('./options');
 let msgHandler = require('./main');
 
 function startSenko(Senko = new Client) {
-  console.log('[SERVER] Server Started!')
+  console.log('[SERVER] Server Started!');
   Senko.onMessage((async (message) => {
-    Senko.getAmountOfLoadedMessages()
+    Senko.getAmountOfLoadedMessages();
     .then((msg) => {
       if (msg >= 3000) {
-        Senko.cutMsgCache()
-      }
-    })
-    msgHandler(Senko, message)
-  }))
-}
+        Senko.cutMsgCache();
+      }:
+    });
+    msgHandler(Senko, message);
+  }));
+};
