@@ -1,9 +1,10 @@
 let { create, Client } = require('@open-wa/wa-automate');
 let options = require('./options');
 let msgHandler = require('./main');
+let { color } = require('./lib/function');
 
 function startSenko(Senko = new Client) {
-  console.log('[SERVER] Server Started!');
+  console.log(color('[SERVER] Server Started!', 'green'));
   Senko.onMessage((async (message) => {
     Senko.getAmountOfLoadedMessages()
     .then((msg) => {
