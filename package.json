@@ -10,7 +10,7 @@
   "author": "moo-d",
   "license": "Apache-2.0",
   "dependencies": {
-    "@open-wa/wa-automate": "^3.0.16",
+    "@open-wa/wa-automate": "^4.22.4",
     "@open-wa/wa-decrypt": "^2.0.1"
   },
   "directories": {
