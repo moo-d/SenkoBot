@@ -1,4 +1,3 @@
-let { decryptMedia } = require('@open-wa/wa-decrypt');
 let { color } = require('./lib/function');
 let fs = require('fs-extra');
 let get = require('got');
