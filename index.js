@@ -10,7 +10,7 @@ function startSenko(Senko = new Client) {
     .then((msg) => {
       if (msg >= 3000) {
         Senko.cutMsgCache();
-      }:
+      };
     });
     msgHandler(Senko, message);
   }));
