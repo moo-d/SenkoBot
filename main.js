@@ -7,8 +7,8 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     let { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, quotedMsgObj, mentionedJidList } = message;
     let { body } = message;
     let { name, formattedTitle } = chat;
-    let { verifiedName } = sender;
-    var pushname = pushname || verifiedName;
+    let { pushname, verifiedName, formattedName } = sender;
+    pushname = pushname || verifiedName || formattedName;
     let commands = caption || body || '';
     let command = commands.toLowerCase().split(' ')[0] || '';
     let args =  commands.split(' ');
