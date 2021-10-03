@@ -3,6 +3,8 @@ let fs = require('fs-extra');
 let get = require('got');
 let moment = require('moment-timezone')
 let config = JSON.parse(fs.readFileSync('./config.json'));
+let { ind } = require('./language')
+let thisLang = ind
 
 module.exports = msgHandler = async (Senko = new Client, message) => {
   try {
