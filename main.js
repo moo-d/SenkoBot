@@ -13,6 +13,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     pushname = pushname || verifiedName || formattedName;
     const cmd = caption || body || ''
     const command = cmd.toLowerCase().split(' ')[0] || ''
+    body = (type === 'chat' && body.startsWith(prefix)) ? body : (((type === 'image' || type === 'video') && caption) && caption.startsWith(prefix)) ? caption : ''
     let args =  commands.split(' ');
     var prefix = config.prefix
     let time = moment(t * 1000).format('DD/MM HH:mm:ss');
@@ -41,7 +42,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
     switch(command) {
       case 'hehe':
-        Senko.reply('test')
+        Senko.reply(from, 'test', id)
       break
     }
   } catch (err) {
