@@ -9,20 +9,11 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     let { name, formattedTitle } = chat;
     let { pushname, verifiedName, formattedName } = sender;
     pushname = pushname || verifiedName || formattedName;
-    let commands = caption || body || '';
-    let command = commands.toLowerCase().split(' ')[0] || '';
+    const cmd = caption || body || ''
+    const command = cmd.toLowerCase().split(' ')[0] || ''
     let args =  commands.split(' ');
     let config = JSON.parse(fs.readFileSync('./config.json'));
     var prefix = config.prefix
-    const msgs = (message) => {
-      if (command.startsWith('!')) {
-        if (message.length >= 10) {
-          return `${message.substr(0, 15)}`;
-        } else {
-          return `${message}`;
-        };
-      };
-    };
     let time = moment(t * 1000).format('DD/MM HH:mm:ss');
     let botNumber = await Senko.getHostNumber();
     let blockNumber = await Senko.getBlockedIds();
