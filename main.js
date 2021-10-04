@@ -4,8 +4,7 @@ let get = require('got');
 let moment = require('moment-timezone')
 let config = JSON.parse(fs.readFileSync('./config.json'));
 let { ind } = require('./language');
-let thisLang = ind;
-let { help } = require('./lib/help.js');
+let mess = ind;
 
 module.exports = msgHandler = async (Senko = new Client, message) => {
   try {
@@ -49,7 +48,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
     switch(command) {
       case 'help':
-        Senko.reply(from, help(prefix), id);
+        Senko.reply(from, mess.help(prefix), id);
       break
     }
   } catch (err) {
