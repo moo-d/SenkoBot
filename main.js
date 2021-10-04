@@ -3,8 +3,9 @@ let fs = require('fs-extra');
 let get = require('got');
 let moment = require('moment-timezone')
 let config = JSON.parse(fs.readFileSync('./config.json'));
-let { ind } = require('./language')
-let thisLang = ind
+let { ind } = require('./language');
+let thisLang = ind;
+let { help } = require('./lib/help.js');
 
 module.exports = msgHandler = async (Senko = new Client, message) => {
   try {
@@ -13,11 +14,11 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     let { name, formattedTitle } = chat;
     let { pushname, verifiedName, formattedName } = sender;
     pushname = pushname || verifiedName || formattedName;
-    const cmd = caption || body || ''
-    const command = cmd.toLowerCase().split(' ')[0] || ''
-    body = (type === 'chat' && body.startsWith(prefix)) ? body : (((type === 'image' || type === 'video') && caption) && caption.startsWith(prefix)) ? caption : ''
+    const cmd = caption || body || '';
+    const command = cmd.toLowerCase().split(' ')[0] || '';
+    body = (type === 'chat' && body.startsWith(prefix)) ? body : (((type === 'image' || type === 'video') && caption) && caption.startsWith(prefix)) ? caption : '';
     let args =  commands.split(' ');
-    var prefix = config.prefix
+    var prefix = config.prefix;
     let time = moment(t * 1000).format('DD/MM HH:mm:ss');
     let botNumber = await Senko.getHostNumber();
     let blockNumber = await Senko.getBlockedIds();
@@ -37,18 +38,18 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     const msgs = (message) => {
       if (command.startsWith(prefix)) {
         if (message.length >= 10) {
-          return `${message.substr(0, 15)}`
+          return `${message.substr(0, 15)}`;
         } else {
-          return `${message}`
-        }
-      }
-    }
+          return `${message}`;
+        };
+      };
+    };
 
     if (!isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname));
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
     switch(command) {
-      case 'hehe':
-        Senko.reply(from, 'test', id)
+      case 'help':
+        Senko.reply(from, help(prefix), id);
       break
     }
   } catch (err) {
