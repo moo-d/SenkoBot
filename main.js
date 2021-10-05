@@ -5,6 +5,7 @@ let moment = require('moment-timezone');
 let axios = require('axios');
 let config = JSON.parse(fs.readFileSync('./config.json'));
 let apilist = JSON.parse(fs.readFileSync('./lib/apilist.json'));
+let { downloader } = require('./lib');
 let { ind } = require('./language');
 let mess = ind;
 
