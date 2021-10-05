@@ -48,6 +48,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
     switch(command) {
       case 'help':
+      case 'menu':
         Senko.reply(from, mess.help(prefix, pushname), id);
       break
     }
