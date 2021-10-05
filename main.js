@@ -49,19 +49,19 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     if (!isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname));
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
     switch(command) {
-      case 'help':
-      case 'menu':
+      case prefix + 'help':
+      case prefix + 'menu':
         Senko.reply(from, mess.help(prefix, pushname), id);
       break
-      case 'meme':
+      case prefix + 'darkjokes':
         await Senko.reply(from, mess.wait(), id);
         try {
           var geturl = await axios.get(`${apilist.hadi}darkjokes`);
-          if (geturl.data.error) return Senko.reply(from, geturl.data.error, id)
-          await Senko.sendFileFromUrl(from, geturl.data.result, 'darkjokes.jpg', mess.done(), id);
+          if (geturl.data.error) return Senko.reply(from, geturl.data.error, id);
+          await Senko.sendFileFromUrl(from, geturl.data.result, 'memes.jpg', mess.done(), id);
         } catch(err) {
-          console.log(err)
-          Senko.reply(from, 'Error!', id)
+          console.log(err);
+          Senko.reply(from, 'Error!', id);
         }
       break
     }
