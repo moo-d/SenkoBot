@@ -11,3 +11,6 @@ _Hello ${pushname}_ ●ω●
 exports.wait = () => {
   return `Tunggu Sebentar...`
 }
+exports.done = () => {
+  return `Selesai.`
+}
