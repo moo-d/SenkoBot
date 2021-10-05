@@ -1,8 +1,10 @@
 let { color } = require('./lib/function');
 let fs = require('fs-extra');
 let get = require('got');
-let moment = require('moment-timezone')
+let moment = require('moment-timezone');
+let axios = require('axios');
 let config = JSON.parse(fs.readFileSync('./config.json'));
+let apilist = JSON.parse(fs.readFileSync('./lib/apilist.json'));
 let { ind } = require('./language');
 let mess = ind;
 
@@ -50,6 +52,17 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       case 'help':
       case 'menu':
         Senko.reply(from, mess.help(prefix, pushname), id);
+      break
+      case 'meme':
+        await Senko.reply(from, mess.wait(), id);
+        try {
+          var geturl = await axios.get(`${apilist.hadi}darkjokes`);
+          if (geturl.data.error) return Senko.reply(from, geturl.data.error, id)
+          await Senko.sendFileFromUrl(from, geturl.data.result, 'darkjokes.jpg', mess.done(), id);
+        } catch(err) {
+          console.log(err)
+          Senko.reply(from, 'Error!', id)
+        }
       break
     }
   } catch (err) {
