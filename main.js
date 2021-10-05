@@ -18,7 +18,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     const cmd = caption || body || '';
     const command = cmd.toLowerCase().split(' ')[0] || '';
     body = (type === 'chat' && body.startsWith(prefix)) ? body : (((type === 'image' || type === 'video') && caption) && caption.startsWith(prefix)) ? caption : '';
-    let args =  commands.split(' ');
+    let args = body.trim().split(/ +/).slice(1)
     var prefix = config.prefix;
     let time = moment(t * 1000).format('DD/MM HH:mm:ss');
     let botNumber = await Senko.getHostNumber();
