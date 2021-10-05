@@ -1,10 +1,13 @@
 exports.help = (prefix, pushname) => {
   return `
 *💫 SENKO BOT 💫*
-_Hello ${pushname}_ ●ω●
+_Halo ${pushname}👋_ ●ω●
 ┏══ *🪀MAIN🪀* ══┅┅┅
 ❥ _${prefix}help_
 ❥ _${prefix}menu_
+┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+┏══ *🗣️FUN🗣️* ══┅┅┅
+❥ _${prefix}darkjokes_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
