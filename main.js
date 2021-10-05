@@ -69,8 +69,13 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         await Senko.reply(from, mess.wait(), id);
         try {
           var geturl = await axios.get(`${apilist.hadi}yt2/audio?url=${query}`);
-          if (geturl.data.msg) return Senko.reply(from, geturl.data.msg, `${geturl.data.result.title}.mp3`, mess.yt3found(geturl),id);
-          await Senko.sendFileFromUrl(from, geturl.data.result.thumb, '')
+          if (geturl.data.msg) return Senko.reply(from, geturl.data.msg, id);
+          await Senko.sendFileFromUrl(from, geturl.data.result.thumb, `${geturl.data.result.title}.jpg`, mess.yt3found(geturl), id);
+          await Senko.sendFileFromUrl(from, geturl.data.download_audio, `${geturl.data.result.title}`, id);
+          console.log(color('[DOWNLOAD] Ytmp3 Downloaded!', 'blue'));
+        } catch(err) {
+          console.log(err);
+          Senko.reply(from, 'Error', id)
         }
       break
     }
