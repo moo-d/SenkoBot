@@ -5,7 +5,6 @@ let moment = require('moment-timezone');
 let axios = require('axios');
 let config = JSON.parse(fs.readFileSync('./config.json'));
 let apilist = JSON.parse(fs.readFileSync('./lib/apilist.json'));
-let { downloader } = require('./lib');
 let { ind } = require('./language');
 let mess = ind;
 
@@ -18,8 +17,8 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     pushname = pushname || verifiedName || formattedName;
     const cmd = caption || body || '';
     const command = cmd.toLowerCase().split(' ')[0] || '';
-    body = (type === 'chat' && body.startsWith(prefix)) ? body : (((type === 'image' || type === 'video') && caption) && caption.startsWith(prefix)) ? caption : '';
-    let args = body.trim().split(/ +/).slice(1)
+    commands = caption || body || '';
+    let args = commands.split(' ');
     var prefix = config.prefix;
     let time = moment(t * 1000).format('DD/MM HH:mm:ss');
     let botNumber = await Senko.getHostNumber();
@@ -66,13 +65,14 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         }
       break
       case 'ytmp3':
-        var query = args.join(" ");
+        var isLinks = args[1].match(/(?:https?\/{2})?(?:w{3}\.)youtu?(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+        if (!isLinks) return Senko.reply(mess.wrongUrl)
         await Senko.reply(from, mess.wait(), id);
         try {
           var geturl = await axios.get(`${apilist.hadi}yt2/audio?url=${query}`);
           if (geturl.data.msg) return Senko.reply(from, geturl.data.msg, id);
           await Senko.sendFileFromUrl(from, geturl.data.result.thumb, `${geturl.data.result.title}.jpg`, mess.yt3found(geturl), id);
-          await Senko.sendFileFromUrl(from, geturl.data.download_audio, `${geturl.data.result.title}`, id);
+          await Senko.sendFileFromUrl(from, geturl.data.download_audio_2, `${geturl.data.result.title}.mp3`, id);
           console.log(color('[DOWNLOAD] Ytmp3 Downloaded!', 'blue'));
         } catch(err) {
           console.log(err);
