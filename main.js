@@ -65,6 +65,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         }
       break
       case 'ytmp3':
+        if (args.length == 0) return Senko.reply(from, mess.needUrl(), id)
         var isLinks = args[1].match(/(?:https?\/{2})?(?:w{3}\.)youtu?(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
         if (!isLinks) return Senko.reply(mess.wrongUrl)
         await Senko.reply(from, mess.wait(), id);
