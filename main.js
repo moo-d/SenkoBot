@@ -70,8 +70,8 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         await Senko.reply(from, mess.wait(), id);
         try {
           var geturl = await axios.get(`${apilist.hadi}yt2/audio?url=${query}`);
-          var filesize = geturl.data.result.size
-          if (Number(filesize.split(' MB')[0]) > 30.00) return Senko.reply(from, mess.durationfile, id);
+          var filesize = geturl.data.result.size;
+          if (Number(filesize.split(' MB')[0]) > 30.00) return Senko.reply(from, mess.durationfile(), id);
           if (geturl.data.msg) return Senko.reply(from, geturl.data.msg, id);
           await Senko.sendFileFromUrl(from, geturl.data.result.thumb, `${geturl.data.result.title}.jpg`, mess.yt3found(geturl), id);
           await Senko.sendAudio(from, geturl.data.result.download_audio_2, id);
