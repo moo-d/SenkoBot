@@ -21,9 +21,16 @@ exports.yt3found = (geturl) => {
   return `
 ┏══ *💽YTMP3💽* ══┅┅┅
 ❥ *Judul* : ${geturl.data.result.title}
+
 ❥ *Resolution* : ${geturl.data.result.resolution}
 ❥ *Extended* : ${geturl.data.result.ext}
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 *Note* : Audio sedang di kirim, tunggu beberapa menit.
 `
+}
+exports.durationfile = () => {
+  return `Durasi file melammpaui batas maksimum.`
+}
+exports.wrongUrl = () => {
+  return `Url salah!`
 }
