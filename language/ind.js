@@ -21,7 +21,7 @@ exports.yt3found = (geturl) => {
   return `
 ┏══ *💽YTMP3💽* ══┅┅┅
 ❥ *Judul* : ${geturl.data.result.title}
-
+❥ *File Size* : ${geturl.data.result.size}
 ❥ *Resolution* : ${geturl.data.result.resolution}
 ❥ *Extended* : ${geturl.data.result.ext}
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
