@@ -9,6 +9,9 @@ _Halo ${pushname}👋_ ●ω●
 ┏══ *🗣️FUN🗣️* ══┅┅┅
 ❥ _${prefix}darkjokes_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+┏══ *🗃️DOWNLOADER🗃️* ══┅┅┅
+❥ _${prefix}ytmp3_ [url]
+┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
 exports.wait = () => {
@@ -29,8 +32,11 @@ exports.yt3found = (geturl) => {
 `
 }
 exports.durationfile = () => {
-  return `Durasi file melammpaui batas maksimum.`
+  return `Durasi file melampaui batas maksimum kak!`
 }
 exports.wrongUrl = () => {
-  return `Url salah!`
+  return `Urlnya salah kak!`
+}
+exports.needUrl = () => {
+  return `Urlnya mana kak?!`
 }
