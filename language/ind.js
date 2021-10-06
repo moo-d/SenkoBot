@@ -24,9 +24,9 @@ exports.yt3found = (geturl) => {
   return `
 ┏══ *💽YTMP3💽* ══┅┅┅
 ❥ *Judul* : ${geturl.data.result.title}
-❥ *File Size* : ${geturl.data.result.size}
-❥ *Resolution* : ${geturl.data.result.resolution}
-❥ *Extended* : ${geturl.data.result.ext}
+❥ *Ukuran File* : ${geturl.data.result.size}
+❥ *Resolusi* : ${geturl.data.result.resolution}
+❥ *Ekstensi* : ${geturl.data.result.ext}
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 *Note* : Audio sedang di kirim, tunggu beberapa menit.
 `
