@@ -5,6 +5,7 @@ let moment = require('moment-timezone');
 let axios = require('axios');
 let config = JSON.parse(fs.readFileSync('./config.json'));
 let apilist = JSON.parse(fs.readFileSync('./lib/apilist.json'));
+let _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
 let { ind } = require('./language');
 let mess = ind;
 
@@ -95,6 +96,9 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
           console.log(err);
           await Senko.reply(from, 'Error!', id);
         }
+      break
+      case 'welcome':
+        if (!isGroupMsg) return Senko.reply(from, mess.onlyGroup(), id)
       break
     }
   } catch (err) {
