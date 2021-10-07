@@ -24,6 +24,9 @@ function startSenko(Senko = new Client) {
     const isWelcome = _welcome.includes(event.chat);
     const gcChat = await Senko.getChatById(event.chat);
     const pcChat = await Senko.getContact(event.who);
+    const { pushname, verifiedName, formattedName } = pcChat;
+    const { name, groupMetadata } = gcChat;
+    const botNumber = await Senko.getHostNumber() + '@c.us';
   });
 };
 
