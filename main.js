@@ -32,6 +32,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     let isOwner = ownerNumber.includes(sender.id);
     let uaOverride = 'WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36';
     let isUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi);
+    let isWelcome = isGroupMsg ? _welcome.includes(groupId) : false
 
     /**
      * Get command message
@@ -71,7 +72,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         if (!isLinks) return Senko.reply(mess.wrongUrl);
         await Senko.reply(from, mess.wait(), id);
         try {
-          var geturl = await axios.get(`${apilist.hadi}yt2/audio?url=${query}`);
+          var geturl = await axios.get(`${apilist.hadi}yt2/audio?url=${args[1]}`);
           var filesize = geturl.data.result.size;
           if (Number(filesize.split(' MB')[0]) > 30.00) return Senko.reply(from, mess.durationfile(), id);
           if (geturl.data.msg) return Senko.reply(from, geturl.data.msg, id);
@@ -103,7 +104,14 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         if (args.length === 0) return Senko.reply(from, mess.enaordisa(), id);
         if (args[1] === 'enable') {
           if (isWelcome) return Senko.reply(from, mess.hasOn(), id);
-        }
+          _welcome.push(groupId, 1);
+          fs.writeFileSync('./lib/database/welcome.json', JSON.stringify(_welcome));
+          await Senko.reply(from, mess.featOn(), id);
+        } else if (args[1] === 'disable') {
+          _welcome.splice(groupId, 1);
+          fs.writeFileSync('./lib/database/welcome.json', JSON.stringify(_welcome));
+          await Senko.reply(from, mess.featOff, id);
+        };
       break
     }
   } catch (err) {
