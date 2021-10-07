@@ -3,6 +3,7 @@ let options = require('./options');
 let msgHandler = require('./main');
 let { color } = require('./lib/function');
 let fs = require('fs');
+let canvas = require('knights-canvas');
 
 function startSenko(Senko = new Client) {
   console.log(color('[SERVER] Server Started!', 'green'));
@@ -18,6 +19,12 @@ function startSenko(Senko = new Client) {
   Senko.onGlobalParticipantsChanged(async (event) => {
     const _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
   })
+  Senko.onGlobalParticipantsChanged(async (event) => {
+    const _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
+    const isWelcome = _welcome.includes(event.chat);
+    const gcChat = await Senko.getChatById(event.chat);
+    const pcChat = await Senko.getContact(event.who);
+  });
 };
 
 create(options(true, startSenko))
