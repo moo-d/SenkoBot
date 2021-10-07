@@ -20,7 +20,8 @@
     "fs-extra": "^10.0.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.0.0",
-    "moment-timezone": "^0.5.33"
+    "moment-timezone": "^0.5.33",
+    "knights-canvas": "^1.3.4-d"
   },
   "directories": {
     "lib": "lib"
