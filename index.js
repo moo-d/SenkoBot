@@ -45,7 +45,7 @@ function startSenko(Senko = new Client) {
         .setMember(groupMetadata.participants.length)
         .toAttachment();
         const base64 = `data:image/png;base64,${bye.toBuffer().toString('base64')}`
-        await Senko.sendFile(event.chat, base64, 'welcome.png', `Welcome ${getname}!`)
+        await Senko.sendFile(event.chat, base64, 'welcome.png', `Welcome ${getname}!`);
       } else if (event.action === 'remove' && event.who !== botNumbers && isWelcome) {
         const pic = await Senko.getProfilePicFromServer(event.who)
         if (pic === 'ERROR: 401') {
@@ -55,6 +55,14 @@ function startSenko(Senko = new Client) {
         } else {
           picx = pic;
         }
+        const bye = await new canvas.Goodbye2()
+        .setAvatar(picx)
+        .setUsername(getname)
+        .setBg('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2D5YzqhqZrLR4dd9gRH85kYMPdpiycmHdPA&usqp=CAU')
+        .setMember(groupMetadata.participants.length)
+        .toAttachment();
+        const base64 = `data:image/png;base64,${bye.toBuffer().toString('base64')}`
+        await Senko.sendFile(event.chat, base64, 'welcome.png', `Goodbye ${getname}, we will miss you~`);
       }
     } catch(err) {
       console.log(err);
