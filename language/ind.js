@@ -40,3 +40,6 @@ exports.wrongUrl = () => {
 exports.needUrl = () => {
   return `Urlnya mana kak?!`
 }
+exports.onlyGroup = () => {
+  return `Ini hanya bisa digunakan di dalam grup kak!`
+}
