@@ -64,7 +64,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
           Senko.reply(from, 'Error!', id);
         }
       break
-      case 'ytmp3':
+      case prefix + 'ytmp3':
         if (args.length == 0) return Senko.reply(from, mess.needUrl(), id);
         var isLinks = args[1].match(/(?:https?\/{2})?(?:w{3}\.)youtu?(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
         if (!isLinks) return Senko.reply(mess.wrongUrl);
@@ -79,7 +79,21 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
           console.log(color('[DOWNLOAD] Ytmp3 Downloaded!', 'blue'));
         } catch(err) {
           console.log(err);
-          Senko.reply(from, 'Error!', id);
+          await Senko.reply(from, 'Error!', id);
+        }
+      break
+      case prefix + 'play':
+        if (args.length == 0) return Senko.reply(from, mess.needQuery(), id);
+        try {
+          await Senko.reply(from, mess.wait(), id);
+          var geturl = await axios.get(`${apilist.hadi}ytplay?url=${args[1]}`);
+          filesize = geturl.data.result.size;
+          if (Number(filesize.split(' MB')[0]) > 30.00) return Senko.reply(from, mess.durationfile(), id);
+          await Senko.sendFileFromUrl(from, `${geturl.data.result.thumb}`, `${geturl.data.result.title}.jpg`, mess.playfound(geturl), id);
+          await Senko.sendFileFromUrl(from, `${geturl.data.result.download_audio}`)
+        } catch(err) {
+          console.log(err);
+          await Senko.reply(from, 'Error!', id);
         }
       break
     }
