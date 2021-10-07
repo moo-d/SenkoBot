@@ -27,6 +27,12 @@ function startSenko(Senko = new Client) {
     const { pushname, verifiedName, formattedName } = pcChat;
     const { name, groupMetadata } = gcChat;
     const botNumber = await Senko.getHostNumber() + '@c.us';
+    try {
+      if (event.action === 'add' && event.who !== botNumbers && isWelcome) {
+      }
+    } catch(err) {
+      console.log(err);
+    }
   });
 };
 
