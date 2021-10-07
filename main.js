@@ -98,7 +98,12 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         }
       break
       case 'welcome':
-        if (!isGroupMsg) return Senko.reply(from, mess.onlyGroup(), id)
+        if (!isGroupMsg) return Senko.reply(from, mess.onlyGroup(), id);
+        if (!isGroupAdmins) return Senko.reply(from, mess.onlyAdminGroup, id);
+        if (args.length === 0) return Senko.reply(from, mess.enaordisa(), id);
+        if (args[1] === 'enable') {
+          if (isWelcome) return Senko.reply(from, mess.hasOn(), id);
+        }
       break
     }
   } catch (err) {
