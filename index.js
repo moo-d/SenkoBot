@@ -29,6 +29,23 @@ function startSenko(Senko = new Client) {
     const botNumber = await Senko.getHostNumber() + '@c.us';
     try {
       if (event.action === 'add' && event.who !== botNumbers && isWelcome) {
+        const pic = await Senko.getProfilePicFromServer(event.who)
+        if (pic === 'ERROR: 401') {
+          var picx = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png';
+        } else if (pic === 'ERROR: 404') {
+          var picx = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg';
+        } else {
+          picx = pic;
+        }
+        const welcomer = await new canvas.Welcome2()
+        .setAvatar(picx)
+        .setUsername(getname)
+        .setBg('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2D5YzqhqZrLR4dd9gRH85kYMPdpiycmHdPA&usqp=CAU')
+        .setGroupName(name)
+        .setMember(groupMetadata.participants.length)
+        .toAttachment();
+        const base64 = `data:image/png;base64,${bye.toBuffer().toString('base64')}`
+        await Senko.sendFile(event.chat, base64, 'welcome.png', `Welcome ${getname}!`)
       }
     } catch(err) {
       console.log(err);
