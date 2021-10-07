@@ -49,3 +49,12 @@ exports.onlyAdminGroup = () => {
 exports.enaordisa = () => {
   return `Gunakan *enable/disable* kak!`
 }
+exports.hasOn = () => {
+  return `Fitur ini sudah aktif sebelumnya kak!`
+}
+exports.featOn = () => {
+  return `Fitur telah diaktifkan!`
+}
+exports.featOff = () => {
+  return `Fitur telah dinonaktifkan!`
+}
