@@ -46,6 +46,15 @@ function startSenko(Senko = new Client) {
         .toAttachment();
         const base64 = `data:image/png;base64,${bye.toBuffer().toString('base64')}`
         await Senko.sendFile(event.chat, base64, 'welcome.png', `Welcome ${getname}!`)
+      } else if (event.action === 'remove' && event.who !== botNumbers && isWelcome) {
+        const pic = await Senko.getProfilePicFromServer(event.who)
+        if (pic === 'ERROR: 401') {
+          var picx = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png';
+        } else if (pic === 'ERROR: 404') {
+          var picx = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg';
+        } else {
+          picx = pic;
+        }
       }
     } catch(err) {
       console.log(err);
