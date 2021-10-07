@@ -46,3 +46,6 @@ exports.onlyGroup = () => {
 exports.onlyAdminGroup = () => {
   return `Ini hanya bisa digunakan oleh admin grup saja kak!`
 }
+exports.enaordisa = () => {
+  return `Gunakan *enable/disable* kak!`
+}
