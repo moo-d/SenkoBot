@@ -43,3 +43,6 @@ exports.needUrl = () => {
 exports.onlyGroup = () => {
   return `Ini hanya bisa digunakan di dalam grup kak!`
 }
+exports.onlyAdminGroup = () => {
+  return `Ini hanya bisa digunakan oleh admin grup saja kak!`
+}
