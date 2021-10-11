@@ -120,45 +120,42 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         };
       break
       case '!sticker':
-        case '!stiker':
-          if (isMedia && type === 'image') {
-            const mediaData = await decryptMedia(message, uaOverride)
-            const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-            await Senko.sendImageAsSticker(from, imageBase64)
-          } else if (quotedMsg && quotedMsg.type == 'image') {
-            const mediaData = await decryptMedia(quotedMsg, uaOverride)
-            const imageBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
-            await Senko.sendImageAsSticker(from, imageBase64)
-          } else if (args.length === 2) {
-            const url = args[1]
-            if (url.match(isUrl)) {
-              await Senko.sendStickerfromUrl(from, url, { method: 'get' })
-              .catch(err => console.log('Caught exception: ', err))
-            } else {
-              Senko.reply(from, mess.wrongUrl(), id)
-            }
+      case '!stiker':
+        if (isMedia && type === 'image') {
+          const mediaData = await decryptMedia(message, uaOverride)
+          const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
+          await Senko.sendImageAsSticker(from, imageBase64)
+        } else if (quotedMsg && quotedMsg.type == 'image') {
+          const mediaData = await decryptMedia(quotedMsg, uaOverride)
+          const imageBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
+          await Senko.sendImageAsSticker(from, imageBase64)
+        } else if (args.length === 2) {
+          const url = args[1]
+          if (url.match(isUrl)) {
+            await Senko.sendStickerfromUrl(from, url, { method: 'get' })
+            .catch(err => console.log('Caught exception: ', err))
           } else {
-            Senko.reply(from, mess.error.St, id)
+            Senko.reply(from, mess.wrongUrl(), id)
           }
-        break
-        /*case '!stickergif':
-        case '!stikergif':
-        case '!sgif':
-          if (isMedia) {
-            if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
-              const mediaData = await decryptMedia(message, uaOverride)
-              Senko.reply(from, mess.wait(), id)
-                    const filename = `./media/aswu.${mimetype.split('/')[1]}`
-                    await fs.writeFileSync(filename, mediaData)
-                    await exec(`gify ${filename} ./media/output.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
-                        const gif = await fs.readFileSync('./media/output.gif', { encoding: "base64" })
-                        await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
-                    })
-                } else (
-                    client.reply(from, '[❗] Kirim video dengan caption *!stickerGif* max 10 sec!', id)
-                )
-            }
-            break*/
+        } else {
+          Senko.reply(from, mess.error.St, id)
+        }
+      break
+      /*case '!stickergif':
+      case '!stikergif':
+      case '!sgif':
+        if (isMedia && isVideo || isGif || isQuotedVideo || isQuotedGif) {
+          await Senko.reply(from, mess.wait, id);
+          try {
+            const encryptMedia = isQuotedGif || isQuotedVideo ? quotedMsg : message;
+            const mediaData = await decryptMedia(encryptMedia, uaOverride);
+            const _mimetype = isQuotedVideo || isQuotedGif ? quotedMsg.mimetype : mimetype;
+            const videoBase64 = `data:${_mimetype};base64,${mediaData.toString('Base64')}`
+            await Senko.sendMp4
+          } catch(err) {
+          }
+        }*/
+      break
     }
   } catch (err) {
     console.error(color('[ERROR]', 'red'), err)
