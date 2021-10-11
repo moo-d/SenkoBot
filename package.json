@@ -9,7 +9,6 @@
   },
   "author": "moo-d",
   "license": "Apache-2.0",
-  "license": "Apache-2.0",
   "dependencies": {
     "@open-wa/wa-automate": "^4.12.3",
     "axios": "^0.21.1",
