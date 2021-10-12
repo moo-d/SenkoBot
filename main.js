@@ -106,7 +106,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       break
       case prefix + 'welcome':
         if (!isGroupMsg) return Senko.reply(from, mess.onlyGroup(), id);
-        if (!isGroupAdmins) return Senko.reply(from, mess.onlyAdminGroup, id);
+        if (!isGroupAdmins) return Senko.reply(from, mess.onlyAdminGroup(), id);
         if (args.length === 0) return Senko.reply(from, mess.enaordisa(), id);
         if (args[1] === 'enable') {
           if (isWelcome) return Senko.reply(from, mess.hasOn(), id);
@@ -141,7 +141,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
           Senko.reply(from, mess.error.St, id)
         }
       break
-      /*case '!stickergif':
+      case '!stickergif':
       case '!stikergif':
       case '!sgif':
         if (isMedia && isVideo || isGif || isQuotedVideo || isQuotedGif) {
@@ -150,11 +150,24 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
             const encryptMedia = isQuotedGif || isQuotedVideo ? quotedMsg : message;
             const mediaData = await decryptMedia(encryptMedia, uaOverride);
             const _mimetype = isQuotedVideo || isQuotedGif ? quotedMsg.mimetype : mimetype;
-            const videoBase64 = `data:${_mimetype};base64,${mediaData.toString('Base64')}`
-            await Senko.sendMp4
+            const videoBase64 = `data:${_mimetype};base64,${mediaData.toString('Base64')}`;
+            await Senko.sendMp4AsSticker(from, videoBase64, null, {
+              stickerMetadata: true,
+              author: pushname,
+              pack: `SenkoBot`,
+              keepScale: true,
+              fps: 30,
+              startTime: `00:00:00.0`,
+              endTime: `00.00.05.0`,
+              crop: false,
+              loop: 0
+            });
+            console.log(`Sticker Created!`);
           } catch(err) {
+            console.log(err);
+            await Senko.reply(from, 'Error!', id);
           }
-        }*/
+        }
       break
     }
   } catch (err) {
