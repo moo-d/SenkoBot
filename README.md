@@ -65,6 +65,10 @@ or:
 
 ## Features
 
+| Leveling | Yes |
+|:--------:|:---:|
+| Leveling | ✔️  |
+
 | Sticker Maker | Yes |
 |:-------------:|:---:|
 | Sticker Image | ✔️  |
