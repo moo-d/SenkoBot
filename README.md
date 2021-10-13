@@ -78,3 +78,7 @@ or:
 |   Downloader   | Yes |
 |:--------------:|:---:|
 | YouTube Audio  | ✔️  |
+
+|     Group      | Yes |
+|:--------------:|:---:|
+| Toogle Welcome | ✔️  |
