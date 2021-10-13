@@ -285,6 +285,37 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	  await Senko.reply(from, mess.enaordisa(), id)
 	}
       break
+      case prefix + 'level':
+	if (!isLeveling) return Senko.reply(from, mess.featOff(), id)
+        if (!isGroupMsg) return Senko.reply(from, mess.onlyGroup(), id)
+	const userLevel = level.getLevelingLevel(sender.id, _level)
+	const userXp = level.getLevelingXp(sender.id, _level)
+	try {
+	  const ppLink = await Senko.getProfilePicFromServer(sender.id)
+	  if (ppLink === `ERROR: 401`) {
+	    var pepe = errorImg
+	  } else if (ppLink === `ERROR: 404`) {
+	    var pepe = `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`
+	  } else {
+	    pepe = ppLink
+	  }
+	  requiredXp = 5 * Math.pow(userLevel, 2) + 50 * userLevel + 100
+	  const rank = await new canvas.Rank()
+	  .setAvatar(pepe)
+	  .setUsername(pushname)
+	  .setBg('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQZxWt5-o6VVDuIYb05SWfmu-1CHSYjV5-0w&usqp=CAU')
+	  .setNeedxp(requiredXp)
+	  .setCurrxp(userXp)
+	  .setLevel(userLevel)
+	  .setRank(role)
+	  .toAttachment()
+	  const outbuf = `data:image/png;base64,${rank.toBuffer().toString('base64')}`
+	  await Senko.sendFile(from, outbuf, 'rank.png', '')
+        } catch(err) {
+	  console.log(err)
+	  await Senko.reply(from, 'Error!', id)
+	}
+      break
     }
   } catch (err) {
     console.error(color('[ERROR]', 'red'), err)
