@@ -36,3 +36,37 @@
     <img title="npm" src="https://img.shields.io/badge/npm-v6.14.11-green">
   </a>
 </p>
+
+## Clone this project
+
+```cmd
+> git clone https://github.com/moo-d/SenkoBot
+```
+
+## Install the dependencies
+
+```cmd
+> npm install gify-cli -g
+> npm i
+```
+
+or:
+
+```cmd
+> yarn install gify-cli -g
+> yarn install
+```
+
+## Usage
+
+```cmd
+> node .
+```
+
+## Features
+
+| Sticker Maker | Yes |
+|:-------------:|:---:|
+| Sticker Image | ✔️  |
+| Sticker Gif   | ✔️  |
+| Sticker Url   | ✔️  |
