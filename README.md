@@ -1,6 +1,6 @@
 <p align="center">
   <a href="/">
-    <img src="./lib/GitMedia/senkobot.jpg" width="150">
+    <img src="./lib/GitMedia/senkobot.jpg" width="120">
   </a>
 </p>
 <p align="center">
