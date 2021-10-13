@@ -70,3 +70,11 @@ or:
 | Sticker Image | ✔️  |
 | Sticker Gif   | ✔️  |
 | Sticker Url   | ✔️  |
+
+|           Fun            | Yes |
+|:------------------------:|:---:|
+| Random Dark Jokes & Meme | ✔️  |
+
+|   Downloader   | Yes |
+|:--------------:|:---:|
+| YouTube Audio  | ✔️  |
