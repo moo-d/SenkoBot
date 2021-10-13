@@ -8,6 +8,7 @@ let axios = require('axios');
 let config = JSON.parse(fs.readFileSync('./config.json'));
 let apilist = JSON.parse(fs.readFileSync('./lib/apilist.json'));
 let _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
+let _level = JSON.parse(fs.readFileSync('./lib/database/level.json'));
 let { ind } = require('./language');
 let mess = ind;
 
