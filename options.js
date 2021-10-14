@@ -9,6 +9,7 @@ const options = () => {
     logConsole: false,
     popup: true,
     qrTimeout: 0,
+    useChrome: true,
   }
   return options
 }
