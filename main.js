@@ -326,14 +326,14 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	  var gtrnd = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
 	  await Senko.sendFileFromUrl(from, gtrnd, 'cecan.jpg', '', id);
         } else {
-          await Senko.sendFileFromUrl(from, geturl2, 'cecan.jpg', '', id);
+          await Senko.sendFileFromUrl(from, geturl2, 'cecan.jpg', mess.done(), id);
         }
       break
       case prefix + 'cogan':
 	await Senko.reply(from, mess.wait(), id);
 	var geturl = await axios.get(`http://hadi-api.herokuapp.com/api/pinterest?q=cogan`);
 	var rslt = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
-	await Senko.sendFileFromUrl(from, rslt, 'cogan.jpg', '', id);
+	await Senko.sendFileFromUrl(from, rslt, 'cogan.jpg', mess.done(), id);
       break
     }
   } catch (err) {
