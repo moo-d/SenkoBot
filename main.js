@@ -316,8 +316,27 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	  await Senko.reply(from, 'Error!', id)
 	}
       break
+      case prefix + 'cecan':
+	await Senko.reply(from, mess.wait(), id);
+	var geturl = await axios.get(apilist.hadi + `pinterest?q=cecan`);
+        var geturl2 = await axios.get(`http://hadi-api.herokuapp.com/api/randomImage/cecan`);
+        var urls = ['url1', 'url2'];
+        var getrndurls = urls[Math.floor(Math.random() * urls.length)];
+        if (getrndurls === `url1`) {
+	  var gtrnd = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
+	  await Senko.sendFileFromUrl(from, gtrnd, 'cecan.jpg', '', id);
+        } else {
+          await Senko.sendFileFromUrl(from, geturl2, 'cecan.jpg', '', id);
+        }
+      break
+      case prefix + 'cogan':
+	await Senko.reply(from, mess.wait(), id);
+	var geturl = await axios.get(`http://hadi-api.herokuapp.com/api/pinterest?q=cogan`);
+	var rslt = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
+	await Senko.sendFileFromUrl(from, rslt, 'cogan.jpg', '', id);
+      break
     }
   } catch (err) {
-    console.error(color('[ERROR]', 'red'), err)
+    console.error(color('[ERROR]', 'red'), err);
   }
 }
