@@ -80,3 +80,13 @@ exports.msgChannel = () => {
 exports.needQuery = () => {
   return `Masukan query kak!`
 }
+exports.playfound = (geturl) => {
+  return `
+┏══ *💽PLAY💽* ══┅┅┅
+❥ *Judul* : ${geturl.data.result.title}
+❥ *Ukuran File* : ${geturl.data.result.size}
+❥ *Resolusi* : ${geturl.data.result.resolution}
+❥ *Ekstensi* : ${geturl.data.result.ext}
+┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+`
+}
