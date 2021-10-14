@@ -82,6 +82,12 @@ or:
 |   Downloader   | Yes |
 |:--------------:|:---:|
 | YouTube Audio  | ✔️  |
+| YouTube Play   | ✔️  |
+
+| Timeline Refresher | Yes |
+|:------------------:|:---:|
+| Random Cogan       | ✔️  |
+| Random Cecan       | ✔️  |
 
 |     Group      | Yes |
 |:--------------:|:---:|
