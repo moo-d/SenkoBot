@@ -154,8 +154,8 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       role = 'https://static.wikia.nocookie.net/valorant/images/2/24/TX_CompetitiveTier_Large_24.png/revision/latest/scale-to-width-down/250?cb=20200623203621'
     }
 
-    if (!isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname));
-    if (isGroupMsg && command.startsWith('!')) console.log(color('[CLIENT]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
+    if (!isGroupMsg && command.startsWith('!')) console.log(color('[CMD]', 'green'), time, color(msgs(command)), 'from', color(pushname));
+    if (isGroupMsg && command.startsWith('!')) console.log(color('[CMD]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
     switch(command) {
       case prefix + 'help':
       case prefix + 'menu':
@@ -319,7 +319,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       case prefix + 'cecan':
 	await Senko.reply(from, mess.wait(), id);
 	var geturl = await axios.get(apilist.hadi + `pinterest?q=cecan`);
-        var geturl2 = await axios.get(`http://hadi-api.herokuapp.com/api/randomImage/cecan`);
+        var geturl2 = await axios.get(apilist.hadi + `randomImage/cecan`);
         var urls = ['url1', 'url2'];
         var getrndurls = urls[Math.floor(Math.random() * urls.length)];
         if (getrndurls === `url1`) {
@@ -331,7 +331,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       break
       case prefix + 'cogan':
 	await Senko.reply(from, mess.wait(), id);
-	var geturl = await axios.get(`http://hadi-api.herokuapp.com/api/pinterest?q=cogan`);
+	var geturl = await axios.get(apilist.hadi + `pinterest?q=cogan`);
 	var rslt = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
 	await Senko.sendFileFromUrl(from, rslt, 'cogan.jpg', mess.done(), id);
       break
@@ -339,12 +339,12 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	if (args.length == 0) return Senko.reply(from, mess.needQuery(), id);
 	try {
 	  await Senko.reply(from, mess.wait(), id);
-	  var geturl = await axios.get(`http://hadi-api.herokuapp.com/api/ytplay?q=${args[1]}`);
+	  var geturl = await axios.get(apilist.hadi + `ytplay?q=${args[1]}`);
 	  var filesize = geturl.data.result.size;
           if (geturl.data.msg) return Senko.reply(from, mess.msgChannel(), id);
-	  if (Number(filesize.split(' MB')[0]) > 30.00) return reply('Durasi audio melebihi batas maksimum!');
+	  if (Number(filesize.split(' MB')[0]) > 30.00) return Senko.reply(from, mess.durationfile(), id);
 	  await Senko.sendFileFromUrl(from, `${geturl.data.result.thumb}`, `${geturl.data.result.title}.jpg`, mess.playfound(geturl), id);
-	  await Senko.sendFileFromUrl(from, geturl.data.result.download_audio);
+	  await Senko.sendFileFromUrl(from, geturl.data.result.download_audio, `${geturl.data.result.title}.mp3`);
 	} catch(err) {
 	  console.log(err);
 	  Senko.reply(from, "Error!", id);
