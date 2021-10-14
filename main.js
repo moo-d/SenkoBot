@@ -335,6 +335,21 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	var rslt = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
 	await Senko.sendFileFromUrl(from, rslt, 'cogan.jpg', mess.done(), id);
       break
+      /*case prefix + 'play':
+	if (args.length == 0) return Senko.reply(from, 'Apa yang mau dicari kak?', id);
+	try {
+	  await Senko.reply(from, mess.wait(), id);
+	  var geturl = await axios.get(`http://hadi-api.herokuapp.com/api/ytplay?q=${args[1]}`);
+	  var filesize = geturl.data.result.size;
+          if (geturl.data.msg) return Senko.reply(mess.msgApi());
+	  if (Number(filesize.split(' MB')[0]) > 30.00) return reply('Durasi audio melebihi batas maksimum!');
+	  await Senko.sendFileFromUrl(from, `${geturl.data.result.thumb}`, `${geturl.data.result.title}.jpg`, mess.playfound(geturl), id);
+	  await Senko.sendFileFromUrl(from, geturl.data.result.download_audio);
+	} catch(err) {
+	  console.log(err);
+	  Senko.reply(from, "Error!", id);
+	}
+      break*/
     }
   } catch (err) {
     console.error(color('[ERROR]', 'red'), err);
