@@ -335,7 +335,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	var rslt = geturl.data.hasil[Math.floor(Math.random() * geturl.data.hasil.length)];
 	await Senko.sendFileFromUrl(from, rslt, 'cogan.jpg', mess.done(), id);
       break
-      /*case prefix + 'play':
+      case prefix + 'play':
 	if (args.length == 0) return Senko.reply(from, mess.needQuery(), id);
 	try {
 	  await Senko.reply(from, mess.wait(), id);
@@ -347,9 +347,9 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	  await Senko.sendFileFromUrl(from, geturl.data.result.download_audio, `${geturl.data.result.title}.mp3`, '', id);
 	} catch(err) {
 	  console.log(err);
-	  Senko.reply(from, "Error!", id);
+	  Senko.reply(from, 'Error!', id);
 	}
-      break*/
+      break
     }
   } catch (err) {
     console.error(color('[ERROR]', 'red'), err);
