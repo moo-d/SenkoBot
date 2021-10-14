@@ -74,3 +74,6 @@ exports.featOn = () => {
 exports.featOff = () => {
   return `Fitur telah dinonaktifkan!`
 }
+exports.msgChannel = () => {
+  return `Query salah atau query mengambil channel, bukan video!`
+}
