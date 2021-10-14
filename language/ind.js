@@ -77,3 +77,6 @@ exports.featOff = () => {
 exports.msgChannel = () => {
   return `Query salah atau query mengambil channel, bukan video!`
 }
+exports.needQuery = () => {
+  return `Masukan query kak!`
+}
