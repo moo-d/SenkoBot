@@ -344,7 +344,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
           if (geturl.data.msg) return Senko.reply(from, mess.msgChannel(), id);
 	  if (Number(filesize.split(' MB')[0]) > 30.00) return Senko.reply(from, mess.durationfile(), id);
 	  await Senko.sendFileFromUrl(from, `${geturl.data.result.thumb}`, `${geturl.data.result.title}.jpg`, mess.playfound(geturl), id);
-	  await Senko.sendFileFromUrl(from, geturl.data.result.download_audio, `${geturl.data.result.title}.mp3`);
+	  await Senko.sendFileFromUrl(from, geturl.data.result.download_audio, `${geturl.data.result.title}.mp3`, '', id);
 	} catch(err) {
 	  console.log(err);
 	  Senko.reply(from, "Error!", id);
