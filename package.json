@@ -27,9 +27,6 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {
-    "sanitize-html": ">=2.3.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moo-d/SenkoBot.git"
