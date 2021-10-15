@@ -9,8 +9,3 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-  # Just Test
-  - package-ecosystem: "axios"
-    directory: "/"
-    schedule:
-      interval: "daily"
