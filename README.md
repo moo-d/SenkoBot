@@ -30,10 +30,10 @@
     <img title="MAINTENED" src="https://img.shields.io/badge/maintened%3F-yes-brightgreen">
   </a>
   <a href="/">
-    <img title="node" src="https://img.shields.io/badge/node-v12.20.2-brightgreen"
+    <img title="node" src="https://img.shields.io/badge/node->=12.20.2-brightgreen"
   </a>
   <a href="/">
-    <img title="npm" src="https://img.shields.io/badge/npm-v6.14.11-green">
+    <img title="npm" src="https://img.shields.io/badge/npm->=6.14.11-green">
   </a>
 </p>
 <div align="center">
