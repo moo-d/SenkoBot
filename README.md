@@ -83,6 +83,12 @@ or:
 > node .
 ```
 
+Or :
+
+```cmd
+> yarn start
+```
+
 ## Features
 
 | Leveling | Yes |
