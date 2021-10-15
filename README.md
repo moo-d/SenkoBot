@@ -36,6 +36,24 @@
     <img title="npm" src="https://img.shields.io/badge/npm-v6.14.11-green">
   </a>
 </p>
+<div align="center">
+  <details>
+    <summary>🍥 Help me! 🍥</summary>
+
+ &nbsp;
+
+ <a href="https://www.buymeacoffee.com/moodyID">
+ <img title="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png">
+ </a>
+
+ &nbsp;
+
+ <a href="https://trakteer.id/moody">
+ <img title="Trakteer" src="https://button.ibnux.net/trakteer/moody.png" width="128">
+ </a>
+
+  </details>
+</p>
 
 ## Clone this project
 
