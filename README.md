@@ -42,15 +42,17 @@
 
  &nbsp;
 
+ <p>
  <a href="https://www.buymeacoffee.com/moodyID">
  <img title="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png">
  </a>
+ </p>
 
- &nbsp;
-
+ <p>
  <a href="https://trakteer.id/moody">
  <img title="Trakteer" src="https://button.ibnux.net/trakteer/moody.png" width="128">
  </a>
+ </p>
 
   </details>
 </p>
