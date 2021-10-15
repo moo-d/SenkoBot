@@ -12,7 +12,7 @@
   "dependencies": {
     "@open-wa/wa-automate": "^4.12.3",
     "@open-wa/wa-decrypt": "^4.3.1",
-    "axios": "^0.21.1",
+    "axios": "^0.23.0",
     "chalk": "^4.1.0",
     "file-type": "^16.2.0",
     "fluent-ffmpeg": "^2.1.2",
