@@ -55,7 +55,7 @@
  </p>
 
   </details>
-</p>
+</div>
 
 ## Clone this project
 
