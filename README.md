@@ -73,8 +73,8 @@
 or:
 
 ```cmd
-> yarn install gify-cli -g
-> yarn install
+> yarn global add gify-cli --prefix ~/.config/yarn/global
+> yarn
 ```
 
 ## Usage
@@ -112,3 +112,13 @@ or:
 |     Group      | Yes |
 |:--------------:|:---:|
 | Toogle Welcome | ✔️  |
+
+---
+
+<p align="center">
+  <img src="/lib/GitMedia/senko-san.gif" width="280">
+</p>
+
+---
+
+T
