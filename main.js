@@ -350,6 +350,21 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	  Senko.reply(from, 'Error!', id);
 	}
       break
+      case prefix + 'ytmp4':
+	if (args.length === 0) return Senko.reply(from, mess.needUrl(), id);
+	await Senko.reply(from, mess.wait(), id);
+        try {
+	 var geturl = await axios.get(apilist.hadi + `yt2/video?url=${args[1]}`);
+	  var filesize = geturl.data.result.size;
+	  if (Number(filesize.split(' MB')[0]) >= 30.00) return Senko.reply(from, mess.durationfile(), id);
+	  var teks = mess.yt4found(geturl);
+	  await Senko.sendFileFromUrl(from, geturl.data.result.thumb, mess.durationfile(), teks, id);
+	  await Senko.sendFileFromUrl(from, geturl.data.result.download_video, `${geturl.data.result.title}.mp4`, mess.done(), id);
+        } catch(err) {
+          console.log(err);
+          await Senko.reply(from, 'Error!', id);
+        }
+      break
     }
   } catch (err) {
     console.error(color('[ERROR]', 'red'), err);
