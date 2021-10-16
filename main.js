@@ -11,7 +11,7 @@ let _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
 let _level = JSON.parse(fs.readFileSync('./lib/database/level.json'));
 let _leveling = JSON.parse(fs.readFileSync('./lib/database/leveling.json'));
 let { level } = require('./lib/level');
-let { ind } = require('./language');
+let { ind, eng } = require('./language');
 let mess = ind;
 
 module.exports = msgHandler = async (Senko = new Client, message) => {
