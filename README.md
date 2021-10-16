@@ -89,6 +89,20 @@ Or :
 > yarn start
 ```
 
+### Change the Language
+
+Change `ind` to `eng` for change the bot language. For Example:
+
+```js
+let mess = ind;
+```
+
+To:
+
+```js
+let mess = eng;
+```
+
 ## Features
 
 | Leveling | Yes |
