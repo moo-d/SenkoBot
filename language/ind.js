@@ -91,3 +91,13 @@ exports.playfound = (geturl) => {
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
+exports.yt4found = (geturl) => {
+  return `
+┏══ *💽YTMP4💽* ══┅┅┅
+❥ *Judul* : ${geturl.data.result.title}
+❥ *Ukuran File* : ${geturl.data.result.size}
+❥ *Resolusi* : ${geturl.data.result.resolution}
+❥ *Extensi File* : ${geturl.data.result.ext}
+┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+`
+}
