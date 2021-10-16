@@ -80,7 +80,7 @@ or:
 ## Usage
 
 ```cmd
-> node .
+> npm start
 ```
 
 Or :
@@ -108,6 +108,7 @@ Or :
 |   Downloader   | Yes |
 |:--------------:|:---:|
 | YouTube Audio  | ✔️  |
+| YouTube Video  | ✔️  |
 | YouTube Play   | ✔️  |
 
 | Timeline Refresher | Yes |
