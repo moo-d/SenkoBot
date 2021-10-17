@@ -136,6 +136,12 @@ let mess = eng;
 
 ---
 
+## Social Media
+
+* <a href="https://chat.whatsapp.com/LAlD7OVteHeJ7fPY9eIuiw"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
+
+---
+
 <p align="center">
   <img src="/lib/GitMedia/senko-san.gif" width="280">
 </p>
