@@ -142,4 +142,18 @@ let mess = eng;
 
 ---
 
-T
+<p align="center">
+  <a href="/">
+    <img title="Thanks To" src="https://img.shields.io/badge/-THANKS%20TO-0b778a?style=for-the-badge">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/open-wa/wa-automate-nodejs">
+    <img src="https://img.shields.io/badge/-%40OPEN--WA%2FWA--AUTOMATE--NODEJS-000?style=flat-square&logo=github">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/SlavyanDesu">
+    <img src="https://img.shields.io/badge/-SLAVYANDESU-000?style=flat-square&logo=github"
+  </a>
+</p>
