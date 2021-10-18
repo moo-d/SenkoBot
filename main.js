@@ -10,9 +10,13 @@ let apilist = JSON.parse(fs.readFileSync('./lib/apilist.json'));
 let _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
 let _level = JSON.parse(fs.readFileSync('./lib/database/level.json'));
 let _leveling = JSON.parse(fs.readFileSync('./lib/database/leveling.json'));
+let game = require('./lib/game');
 let { level } = require('./lib/level');
 let { ind, eng } = require('./language');
 let mess = ind;
+
+ckl = [];
+gamewaktu = 60;
 
 module.exports = msgHandler = async (Senko = new Client, message) => {
   try {
@@ -25,6 +29,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     const command = cmd.toLowerCase().split(' ')[0] || '';
     commands = caption || body || '';
     let args = commands.split(' ');
+    let chats = (type === 'chat') ? body : ((type === 'image' || type === 'video')) ? caption : ''
     var prefix = config.prefix;
     let time = moment(t * 1000).format('DD/MM HH:mm:ss');
     let botNumber = await Senko.getHostNumber();
@@ -43,7 +48,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     let isGif = mimetype === 'image/gif';
     let isQuotedVideo = quotedMsg && quotedMsg.type === 'video';
     let isQuotedGif = quotedMsg && quotedMsg.mimetype === 'image/gif';
-
+    let isQuotedText = quotedMsg && quotedMsg.type === 'chat';
     /**
      * Get command message
      * @param {string} message
@@ -91,6 +96,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       }
     }
 
+    // Siapakah
     const levelRole = level.getLevelingLevel(sender.id, _level)
     var role = 'https://multiboosting.com/app/plugins/multiboosting-calculator-plugin/public/images/rainbowsix/copper-v.png'
     if (levelRole >= 5) {
