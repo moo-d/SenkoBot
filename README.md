@@ -134,6 +134,10 @@ let mess = eng;
 |:--------------:|:---:|
 | Toogle Welcome | ✔️  |
 
+|   Game   | Yes |
+|:--------:|:---:|
+| Siapakah | ✔️  |
+
 ---
 
 ## Social Media
