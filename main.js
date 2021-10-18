@@ -97,6 +97,17 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     }
 
     // Siapakah
+    game.cekWaktuCkl(Senko, ckl)
+    if (game.isCkl(from, ckl)){
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))){
+        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}`, id)
+        ckl.splice(game.getCklPosi(from, ckl), 1)
+      } else {
+        await Senko.reply(from, 'jawaban salah', id)
+      }
+    }
+
+
     const levelRole = level.getLevelingLevel(sender.id, _level)
     var role = 'https://multiboosting.com/app/plugins/multiboosting-calculator-plugin/public/images/rainbowsix/copper-v.png'
     if (levelRole >= 5) {
