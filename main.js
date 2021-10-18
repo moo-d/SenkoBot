@@ -96,7 +96,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       }
     }
 
-    // Siapakah
+    // Siapakah By @mrfzvx12
     game.cekWaktuCkl(Senko, ckl)
     if (game.isCkl(from, ckl)){
       if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))){
@@ -381,6 +381,17 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
           console.log(err);
           await Senko.reply(from, 'Error!', id);
         }
+      break
+      case prefix + 'siapakah':
+        if (game.isCkl(from, ckl)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/siapakah.json');
+        list = JSON.parse(data);
+        random = Math.floor(Math.random() * list.length);
+        let v = list[random]
+        const petunjuk = v.jawaban.replace(/[aiueoAIUEO]/gi, '_')
+        await Senko.reply(from, `*Soal :*\n${v.soal}\n*Clue :* ${petunjuk}\n\nWaktu : ${gamewaktu}s`, id)
+	let anih = v.jawaban.toLowerCase()
+        game.addckl(from, anih, gamewaktu, ckl)
       break
     }
   } catch (err) {
