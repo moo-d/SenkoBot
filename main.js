@@ -384,7 +384,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       break
       case prefix + 'siapakah':
         if (game.isCkl(from, ckl)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
-	data = fs.readFileSync('./lib/siapakah.json');
+	data = fs.readFileSync('./lib/database/siapakah.json');
         list = JSON.parse(data);
         random = Math.floor(Math.random() * list.length);
         let v = list[random]
