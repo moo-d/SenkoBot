@@ -46,6 +46,12 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     let isUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi);
     let isWelcome = isGroupMsg ? _welcome.includes(groupId) : false;
     let isLeveling = isGroupMsg ? _leveling.includes(groupId) : false;
+    body = (type === 'chat' && body.startsWith(prefix)) ? body : (((type === 'image' || type === 'video') && caption) && caption.startsWith(prefix)) ? caption : '';
+    let args2 = body.trim().split(/ +/).slice(1);
+    let q = args2.join(' ');
+    let ar = args2.map((v) => v.toLowerCase());
+    let url = args.length !== 0 ? args[0] : '';
+    let isPremium = premium.checkPremiumUser(sender.id, _premium)
     let isVideo = type === 'video';
     let isGif = mimetype === 'image/gif';
     let isQuotedVideo = quotedMsg && quotedMsg.type === 'video';
@@ -100,10 +106,16 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 
     // Siapakah By @mrfzvx12
     game.cekWaktuCkl(Senko, ckl);
-    if (game.isCkl(from, ckl)){
-      if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))){
-        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}`, id);
+    if (game.isCkl(from, ckl)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))) {
+        if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500)
+        } else {
+          rewardxp = Math.ceil(Math.random() * 250);
+        };
+        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}\n\n+${rewardxp}`, id);
         ckl.splice(game.getCklPosi(from, ckl), 1);
+        level.addLevelingXp(sender.id, rewardxp, _level)
       } else {
         await Senko.reply(from, 'jawaban salah', id);
       }
@@ -400,6 +412,62 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         await Senko.reply(from, `*Soal :*\n${v.soal}\n*Clue :* ${petunjuk}\n\nWaktu : ${gamewaktu}s`, id)
 	let anih = v.jawaban.toLowerCase()
         game.addckl(from, anih, gamewaktu, ckl)
+      break
+      case prefix+'premium':
+	if (!isOwner) return await Senko.reply(from, mess.onlyOwner(), id);
+	if (args[1] === 'add') {
+	  if (mentionedJidList.length !== 0) {
+	    for (let prem of mentionedJidList) {
+              if (args.length === 2) {
+                mazn = 2592000000
+              } else {
+                mazn = args2[2]
+              }
+	      if (prem === botNumber) return await Senko.reply(from, 'Hmm!', id)
+	      premium.addPremiumUser(prem, mazn, _premium)
+	      await Senko.reply(from, `*┏══ *✅PREMIUM ADDED✅* ══┅┅┅*\n\n❥ *ID*: ${prem}\n❥ *Expired*: ${ms(toMs(args2[2])).days} day(s) ${ms(toMs(args2[2])).hours} hour(s) ${ms(toMs(args2[2])).days} day(s) ${ms(toMs(args2[2])).hours} hour(s) ${ms(toMs(args2[2])).minutes} minute(s)\n┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅`, id)
+	    }
+	  } else {
+            if (args.length === 2) {
+              mazn = 2592000000
+            } else {
+              mazn = args2[2]
+            }
+	    premium.addPremiumUser(args2[1] + '@c.us', mazn, _premium)
+	    await Senko.reply(from, `*┏══ *✅PREMIUM ADDED✅* ══┅┅┅*\n\n❥ *ID*: ${args2[1]}@c.us\n❥ *Expired*: ${ms(toMs(args2[2])).days} day(s) ${ms(toMs(args2[2])).hours} hour(s) ${ms(toMs(args2[2])).minutes} minute(s)┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅`, id)
+	  }
+	} else if (args[1] === 'del') {
+	  if (mentionedJidList.length !== 0) {
+	    if (mentionedJidList[0] === botNumber) return await Senko.reply(from, '....', id)
+	    _premium.splice(premium.getPremiumPosition(mentionedJidList[0], _premium), 1)
+	    fs.writeFileSync('./lib/database/premium.json', JSON.stringify(_premium))
+	    await Senko.reply(from, mess.done(), id)
+	  } else {
+	    _premium.splice(premium.getPremiumPosition(args[1] + '@c.us', _premium), 1)
+	    fs.writeFileSync('./lib/database/premium.json', JSON.stringify(_premium))
+	    await Senko.reply(from, mess.done(), id)
+	  }
+	} else {
+	  await Senko.reply(from, 'Hmm', id)
+	}
+      break
+      case prefix+'premiumcheck':
+      case prefix+'cekpremium':
+	if (!isPremium) return await Senko.reply(from, 'Kamu tidak terdaftar dalam user premium', id)
+	const cekExp = ms(premium.getPremiumExpired(sender.id, _premium) - Date.now())
+	await Senko.reply(from, `*── 「 PREMIUM EXPIRED 」 ──*\n\n➸ *ID*: ${sender.id}\n➸ *Premium left*: ${cekExp.days} day(s) ${cekExp.hours} hour(s) ${cekExp.minutes} minute(s)`, id)
+      break
+      case prefix+'premiumlist':
+      case prefix+'listpremium':
+	let listPremi = '*── 「 PREMIUM USERS 」 ──*\n\n'
+	const deret = premium.getAllPremiumUser(_premium)
+	const arrayPremi = []
+	  for (let i = 0; i < deret.length; i++) {
+	  const checkExp = ms(premium.getPremiumExpired(deret[i], _premium) - Date.now())
+	  arrayPremi.push(await Senko.getContact(premium.getAllPremiumUser(_premium)[i]))
+	  listPremi += `${i + 1}. wa.me/${premium.getAllPremiumUser(_premium)[i].replace('@c.us', '')}\n➸ *Name*: ${arrayPremi[i].pushname}\n➸ *Expired*: ${checkExp.days} day(s) ${checkExp.hours} hour(s) ${checkExp.minutes} minute(s)\n\n`
+	}
+	await Senko.reply(from, listPremi, id)
       break
     }
   } catch (err) {
