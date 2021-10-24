@@ -11,7 +11,9 @@ let _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
 let _level = JSON.parse(fs.readFileSync('./lib/database/level.json'));
 let _leveling = JSON.parse(fs.readFileSync('./lib/database/leveling.json'));
 let game = require('./lib/game');
-let { level } = require('./lib/level');
+let level = require('./lib/level');
+let _premium = JSON.parse(fs.readFileSync('./lib/database/premium.json'));
+let premium = require('./lib/premium');
 let { ind, eng } = require('./language');
 let mess = ind;
 
@@ -97,16 +99,17 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     }
 
     // Siapakah By @mrfzvx12
-    game.cekWaktuCkl(Senko, ckl)
+    game.cekWaktuCkl(Senko, ckl);
     if (game.isCkl(from, ckl)){
       if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))){
-        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}`, id)
-        ckl.splice(game.getCklPosi(from, ckl), 1)
+        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}`, id);
+        ckl.splice(game.getCklPosi(from, ckl), 1);
       } else {
-        await Senko.reply(from, 'jawaban salah', id)
+        await Senko.reply(from, 'jawaban salah', id);
       }
-    }
+    };
 
+    premium.expiredCheck(_premium);
 
     const levelRole = level.getLevelingLevel(sender.id, _level)
     var role = 'https://multiboosting.com/app/plugins/multiboosting-calculator-plugin/public/images/rainbowsix/copper-v.png'
@@ -170,6 +173,11 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
     if (levelRole >= 100) {
       role = 'https://static.wikia.nocookie.net/valorant/images/2/24/TX_CompetitiveTier_Large_24.png/revision/latest/scale-to-width-down/250?cb=20200623203621'
     }
+
+    /**
+     * Premium created By @SlavyanDesu
+     */
+    
 
     if (!isGroupMsg && command.startsWith('!')) console.log(color('[CMD]', 'green'), time, color(msgs(command)), 'from', color(pushname));
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CMD]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
