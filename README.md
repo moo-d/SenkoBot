@@ -138,6 +138,15 @@ let mess = eng;
 |:--------:|:---:|
 | Siapakah | ✔️  |
 
+|         Info          | Yes |
+|:---------------------:|:---:|
+| Check Premium Expired | ✔️  |
+| Check List Premium    | ✔️  |
+
+|      Owner      | Yes |
+|:---------------:|:---:|
+| Premium Add/Del | ✔️  |
+
 ---
 
 ## Social Media
