@@ -105,3 +105,6 @@ exports.yt4found = (geturl) => {
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
+exports.onlyOwner = () => {
+  return `?This feature can only be used by bot owners!`
+}
