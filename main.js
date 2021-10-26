@@ -198,7 +198,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       case prefix + 'menu':
         Senko.reply(from, mess.help(prefix, pushname), id);
       break
-      case prefix + 'darkjokes':
+      case prefix + 'jokes':
         await Senko.reply(from, mess.wait(), id);
         try {
           var geturl = await axios.get(`${apilist.hadi}darkjokes`);
