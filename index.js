@@ -18,9 +18,6 @@ function startSenko(Senko = new Client) {
   }));
   Senko.onGlobalParticipantsChanged(async (event) => {
     const _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
-  })
-  Senko.onGlobalParticipantsChanged(async (event) => {
-    const _welcome = JSON.parse(fs.readFileSync('./lib/database/welcome.json'));
     const isWelcome = _welcome.includes(event.chat);
     const gcChat = await Senko.getChatById(event.chat);
     const pcChat = await Senko.getContact(event.who);
