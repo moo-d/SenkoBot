@@ -14,7 +14,7 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/moo-d/followers">
+  <a href="https://github.com/moo-d?tab=followers">
     <img title="followers" src="https://img.shields.io/github/followers/moo-d">
   </a>
   <a href="https://github.com/moo-d/senkobot/stargazers">
