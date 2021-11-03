@@ -2,45 +2,45 @@ exports.help = (prefix, pushname) => {
   return `
 *💫 SENKO BOT 💫*
 _Halo ${pushname}👋_ ●ω●
-┏══ *🪀MAIN🪀* ══┅┅┅
-❥ _${prefix}help_
-❥ _${prefix}menu_
+┏┅ *≡ ✗ MAIN ✗*
+⊙ _${prefix}help_
+⊙ _${prefix}menu_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *🖼️STICKER🖼️* ══┅┅┅
-❥ _${prefix}sticker_
-❥ _${prefix}sticker [url]_
-❥ _${prefix}stickergif_
+┏┅ *≡ ✗ STICKER MAKER ✗*
+⊙ _${prefix}sticker_
+⊙ _${prefix}sticker [url]_
+⊙ _${prefix}stickergif_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *🗣️FUN🗣️* ══┅┅┅
-❥ _${prefix}jokes
+┏┅ *≡ ✗ FUN ✗*
+⊙ _${prefix}jokes
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *🗃️DOWNLOADER🗃️* ══┅┅┅
-❥ _${prefix}ytmp3 [url]_
-❥ _${prefix}ytmp4 [url]_
-❥ _${prefix}play [query]_
+┏┅ *≡ ✗ DOWNLOADER ✗*
+⊙ _${prefix}ytmp3 [url]_
+⊙ _${prefix}ytmp4 [url]_
+⊙ _${prefix}play [query]_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *📍GROUP📍* ══┅┅┅
-❥ _${prefix}welcome [enable/disable]_
+┏┅ *≡ ✗ GROUP ✗*
+⊙ _${prefix}welcome [enable/disable]_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *🔆TIMELINE🔆* ══┅┅┅
-❥ _${prefix}cogan_
-❥ _${prefix}cecan_
+┏┅ *≡ ✗ TIMELINE ✗*
+⊙ _${prefix}cogan_
+⊙ _${prefix}cecan_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *🔼LEVELING🔼* ══┅┅┅
-❥ _${prefix}leveling [enable/disable]_
-❥ _${prefix}level_
+┏┅ *≡ ✗ LEVELING ✗*
+⊙ _${prefix}leveling [enable/disable]_
+⊙ _${prefix}level_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *🎮GAME🎮* ══┅┅┅
-❥ _${prefix}siapakah_
+┏┅ *≡ ✗ GAME ✗*
+⊙ _${prefix}siapakah_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *❕INFO❕* ══┅┅┅
-❥ _${prefix}premiumlist_
-❥ _${prefix}listpremium_
-❥ _${prefix}cekpremium_
-❥ _${prefix}premiumcheck_
+┏┅ *≡ ✗ INFO ✗*
+⊙ _${prefix}premiumlist_
+⊙ _${prefix}listpremium_
+⊙ _${prefix}cekpremium_
+⊙ _${prefix}premiumcheck_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
-┏══ *👑OWNER👑* ══┅┅┅
-❥ _${prefix}premium [add/del] [@tag/628xxx]
+┏┅ *≡ ✗ OWNER ✗*
+⊙ _${prefix}premium [add/del] [@tag/628xxx]
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
@@ -52,11 +52,11 @@ exports.done = () => {
 }
 exports.yt3found = (geturl) => {
   return `
-┏══ *💽YTMP3💽* ══┅┅┅
-❥ *Judul* : ${geturl.data.result.title}
-❥ *Ukuran File* : ${geturl.data.result.size}
-❥ *Resolusi* : ${geturl.data.result.resolution}
-❥ *Ekstensi* : ${geturl.data.result.ext}
+┏┅ *≡ ✗ YTMP3 ✗*
+⊙ *Judul* : ${geturl.data.result.title}
+⊙ *Ukuran File* : ${geturl.data.result.size}
+⊙ *Resolusi* : ${geturl.data.result.resolution}
+⊙ *Ekstensi* : ${geturl.data.result.ext}
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 *Note* : Audio sedang di kirim, tunggu beberapa menit.
 `
@@ -96,21 +96,21 @@ exports.needQuery = () => {
 }
 exports.playfound = (geturl) => {
   return `
-┏══ *💽PLAY💽* ══┅┅┅
-❥ *Judul* : ${geturl.data.result.title}
-❥ *Ukuran File* : ${geturl.data.result.size}
-❥ *Resolusi* : ${geturl.data.result.resolution}
-❥ *Ekstensi* : ${geturl.data.result.ext}
+┏┅ *≡ ✗ PLAY MP3 ✗*
+⊙ *Judul* : ${geturl.data.result.title}
+⊙ *Ukuran File* : ${geturl.data.result.size}
+⊙ *Resolusi* : ${geturl.data.result.resolution}
+⊙ *Ekstensi* : ${geturl.data.result.ext}
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
 exports.yt4found = (geturl) => {
   return `
-┏══ *💽YTMP4💽* ══┅┅┅
-❥ *Judul* : ${geturl.data.result.title}
-❥ *Ukuran File* : ${geturl.data.result.size}
-❥ *Resolusi* : ${geturl.data.result.resolution}
-❥ *Extensi File* : ${geturl.data.result.ext}
+┏┅ *≡ ✗ YTMP4 ✗*
+⊙ *Judul* : ${geturl.data.result.title}
+⊙ *Ukuran File* : ${geturl.data.result.size}
+⊙ *Resolusi* : ${geturl.data.result.resolution}
+⊙ *Extensi File* : ${geturl.data.result.ext}
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
