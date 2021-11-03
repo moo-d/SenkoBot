@@ -4,6 +4,7 @@ let msgHandler = require('./main');
 let { color } = require('./lib/function');
 let fs = require('fs');
 let canvas = require('knights-canvas');
+let antiDelete = require('./lib/antidelete');
 
 function startSenko(Senko = new Client) {
   console.log(color('[SERVER] Server Started!', 'green'));
@@ -65,6 +66,10 @@ function startSenko(Senko = new Client) {
       console.log(err);
     }
   });
+  /* Anti Delete by @moo-d */
+  Senko.onMessageDeleted(async (message) => {
+    antiDelete(Senko, message)
+  })
 };
 
 create(options(true, startSenko))
