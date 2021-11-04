@@ -34,10 +34,8 @@ _Halo ${pushname}👋_ ●ω●
 ⊙ _${prefix}siapakah_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ INFO ✗*
-⊙ _${prefix}premiumlist_
 ⊙ _${prefix}listpremium_
 ⊙ _${prefix}cekpremium_
-⊙ _${prefix}premiumcheck_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ OWNER ✗*
 ⊙ _${prefix}premium [add/del] [@tag/628xxx]
@@ -116,4 +114,10 @@ exports.yt4found = (geturl) => {
 }
 exports.onlyOwner = () => {
   return `Fitur ini hanya bisa di gunakan oleh owner bot!`
+}
+exports.unknownCmd = (prefix, pushname, args) => {
+  return `┏┅ *≡ ✗ SENKO INFO ✗*
+Maaf kak ${pushname}, perintah *${args[0]}* tidak ada di dalam *${prefix}menu*!
+┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+`
 }
