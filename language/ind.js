@@ -117,7 +117,10 @@ exports.onlyOwner = () => {
 }
 exports.unknownCmd = (prefix, pushname, args) => {
   return `┏┅ *≡ ✗ SENKO INFO ✗*
-Maaf kak ${pushname}, perintah *${args[0]}* tidak ada di dalam *${prefix}menu*!
+Maaf ${pushname}, perintah *${args[0]}* tidak ada di dalam *${prefix}menu*!
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
+}
+exports.gameNotFinished = (game) => {
+  return `*${game}* masih ada yang belum diselesaikan.`
 }
