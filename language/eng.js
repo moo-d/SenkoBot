@@ -118,5 +118,5 @@ exports.onlyOwner = () => {
   return `?This feature can only be used by bot owners!`
 }
 exports.gameNotFinished = (game) => {
-  return `*${game}* there are still unfinished.`
+  return `The *${game}* is still unfinished`
 }
