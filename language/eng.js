@@ -117,3 +117,6 @@ exports.yt4found = (geturl) => {
 exports.onlyOwner = () => {
   return `?This feature can only be used by bot owners!`
 }
+exports.gameNotFinished = (game) => {
+  return `*${game}* there are still unfinished.`
+}
