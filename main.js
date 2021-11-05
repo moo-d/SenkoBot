@@ -18,6 +18,13 @@ let { ind, eng } = require('./language');
 let mess = ind;
 
 ckl = [];
+suk = [];
+ckl = [];
+tek = [];
+tkk = [];
+teg = [];
+tel = [];
+mathr = [];
 gamewaktu = 60;
 
 module.exports = msgHandler = async (Senko = new Client, message) => {
@@ -76,52 +83,33 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
      */
     if (isGroupMsg && !level.isGained(sender.id) && isLeveling) {
       try {
-	level.addCooldown(sender.id)
-	let currentLevel = level.getLevelingLevel(sender.id, _level)
-	let amountXp = Math.floor(Math.random() * (15 - 25 + 1) + 15)
-	let requiredXp = 5 * Math.pow(currentLevel, 2) + 50 * currentLevel + 100
-	level.addLevelingXp(sender.id, amountXp, _level)
+	level.addCooldown(sender.id);
+	let currentLevel = level.getLevelingLevel(sender.id, _level);
+	let amountXp = Math.floor(Math.random() * (15 - 25 + 1) + 15);
+	let requiredXp = 5 * Math.pow(currentLevel, 2) + 50 * currentLevel + 100;
+	level.addLevelingXp(sender.id, amountXp, _level);
 	if (requiredXp <= level.getLevelingXp(sender.id, _level)) {
-	  level.addLevelingLevel(sender.id, 1, _level)
-	  let userLevel = level.getLevelingLevel(sender.id, _level)
-	  let fetchXp = 5 * Math.pow(userLevel, 2) + 50 * userLevel + 100
-	  let pic = await Senko.getProfilePicFromServer(sender.id)
+	  level.addLevelingLevel(sender.id, 1, _level);
+	  let userLevel = level.getLevelingLevel(sender.id, _level);
+	  let fetchXp = 5 * Math.pow(userLevel, 2) + 50 * userLevel + 100;
+	  let pic = await Senko.getProfilePicFromServer(sender.id);
 	  if (pic === `ERROR: 401`) {
-	    var picx = `https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png`
+	    var picx = `https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png`;
 	  } else if (pic === `ERROR: 404`) {
-	    var picx = `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`
+	    var picx = `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`;
 	  } else {
-	    picx = pic
-	  }
+	    picx = pic;
+	  };
 	  const levelup = await new canvas.Up()
 	  .setAvatar(picx)
 	  .toAttachment();
-	  const base64 = `data:image/png;base64,${levelup.toBuffer().toString('base64')}`
-	  await Senko.sendFile(from, base64, 'levelup.png', `Selamat ${pushname}!\nXP kamu sekarang: ${level.getLevelingXp(sender.id, _level)} / ${fetchXp}`)
-	}
+	  const base64 = `data:image/png;base64,${levelup.toBuffer().toString('base64')}`;
+	  await Senko.sendFile(from, base64, 'levelup.png', `Selamat ${pushname}!\nXP kamu sekarang: ${level.getLevelingXp(sender.id, _level)} / ${fetchXp}`);
+	};
       } catch(err) {
-	console.log(err)
-      }
-    }
-
-    // Siapakah By @mrfzvx12
-    game.cekWaktuCkl(Senko, ckl);
-    if (game.isCkl(from, ckl)) {
-      if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))) {
-        if (isPremium) {
-          var rewardxp = Math.ceil(Math.random() * 500)
-        } else {
-          rewardxp = Math.ceil(Math.random() * 250);
-        };
-        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}\n\n+${rewardxp}`, id);
-        ckl.splice(game.getCklPosi(from, ckl), 1);
-        level.addLevelingXp(sender.id, rewardxp, _level)
-      } else {
-        await Senko.reply(from, 'jawaban salah', id);
+	console.log(err);
       }
     };
-
-    premium.expiredCheck(_premium);
 
     const levelRole = level.getLevelingLevel(sender.id, _level)
     var role = 'https://multiboosting.com/app/plugins/multiboosting-calculator-plugin/public/images/rainbowsix/copper-v.png'
@@ -186,10 +174,144 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       role = 'https://static.wikia.nocookie.net/valorant/images/2/24/TX_CompetitiveTier_Large_24.png/revision/latest/scale-to-width-down/250?cb=20200623203621'
     }
 
+    /* Siapakah By @mrfzvx12 */
+    game.cekWaktuCkl(Senko, ckl);
+    if (game.isCkl(from, ckl)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, ckl))) {
+        if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500);
+        } else {
+          var rewardxp = Math.ceil(Math.random() * 250);
+        };
+        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ckl)}\n\n+${rewardxp}`, id);
+        ckl.splice(game.getCklPosi(from, ckl), 1);
+        level.addLevelingXp(sender.id, rewardxp, _level);
+      } else {
+        await Senko.reply(from, 'jawaban salah', id);
+      }
+    };
+
+    /* Susun Kata By @moo-d */
+    game.cekWaktuCkl(Senko, suk);
+    if (game.isCkl(from, suk)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, suk))) {
+        if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500);
+        } else {
+	  var rewardxp = Math.ceil(Math.random() * 250);
+        };
+	await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, suk)}\n\n+${rewardxp}`, id);
+	suk.splice(game.getCklPosi(from, suk), 1);
+	level.addLevelingXp(sender.id, rewardxp, _level);
+      } else {
+	await Senko.reply(from, 'jawaban salah', id);
+      }
+    };
+
+    /* Tebak Kalimat By @moo-d */
+    game.cekWaktuCkl(Senko, tek);
+    if (game.isCkl(from, tek)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, tek))) {
+        if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500);
+        } else {
+	  var rewardxp = Math.ceil(Math.random() * 250);
+        };
+	await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, tek)}\n\n+${rewardxp}`, id);
+	tek.splice(game.getCklPosi(from, tek), 1);
+	level.addLevelingXp(sender.id, rewardxp, _level);
+      } else {
+	await Senko.reply(from, 'jawaban salah', id);
+      }
+    };
+
+    /* Tebak Kata By @moo-d */
+    game.cekWaktuCkl(Senko, tkk);
+    if (game.isCkl(from, tkk)){
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, tkk))) {
+        if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500);
+        } else {
+	  var rewardxp = Math.ceil(Math.random() * 250);
+        };
+	await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, tkk)}\n\n+${rewardxp}`, id);
+	tkk.splice(game.getCklPosi(from, tkk), 1);
+	level.addLevelingXp(sender.id, rewardxp, _level);
+      } else {
+	await Senko.reply(from, 'jawaban salah', id);
+	console.log('Wrong');
+      }
+    };
+
+    /* Tebak Gambar By @moo-d */
+    game.cekWaktuCkl(Senko, teg);
+    if (game.isCkl(from, teg)){
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, teg))){
+	if (isPremium) {
+          var hent = Math.ceil(Math.random() * 500);
+        } else {
+          var hent = Math.ceil(Math.random() * 250);
+        };
+	await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, teg)}\n\n+${hent} XP`, id);
+	level.addLevelingXp(sender.id, hent, _level);
+	teg.splice(game.getCklPosi(from, teg), 1);
+      } else {
+	await Senko.reply(from, 'jawaban salah', id);
+      }
+    };
+
+    /* Teka Teki By @moo-d
+    game.cekWaktuCkl(Senko, ttk);
+    if (game.isCkl(from, ttk)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, ttk))) {
+	if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500);
+        } else {
+	  var rewardxp = Math.ceil(Math.random() * 250);
+        };
+	await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, ttk)}\n\n+${rewardxp}`, id);
+	ttk.splice(game.getCklPosi(from, ttk), 1);
+	level.addLevelingXp(sender.id, rewardxp, _level);
+      } else {
+	await Senko.reply(from, 'jawaban salah', id);
+      }
+    };
+
+    /* Cak Lontong By @moo-d */
+    let caklDesc = `${game.getDescCkl(from, clo)}`;
+    game.cekWaktuCklWithDesc(Senko, caklDesc, clo);
+    if (game.isCkl(from, clo)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, clo))) {
+	if (isPremium) {
+          var rewardxp = Math.ceil(Math.random() * 500);
+        } else {
+	  var rewardxp = Math.ceil(Math.random() * 250);
+        };
+        await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, clo)}\n*Penjelasan :* ${game.getDescCkl(from, clo)}\n\n+${rewardxp}`, id);
+	clo.splice(game.getCklPosi(from, clo), 1);
+	level.addLevelingXp(from, rewardxp, _level);
+      } else {
+	await Senko.reply(from, 'Jawaban salah!', id);
+      }
+    };
+
+    /* Tebak Lirik By @moo-d */
+    game.cekWaktuCkl(Senko, tel);
+    if (game.isCkl(from, tel)) {
+      if (chats.toLowerCase().includes(game.getJawabanCkl(from, tel))) {
+	rewardxp = Math.ceil(Math.random() * 250);
+	await Senko.reply(from, `*Selamat jawaban kamu benar*\n*Jawaban :* ${game.getJawabanCkl(from, tel)}\n\n+${rewardxp}`, id);
+	tel.splice(game.getCklPosi(from, tel), 1);
+	level.addLevelingXp(sender.id, rewardxp, _level)
+      } else {
+	await Senko.reply(from, 'jawaban salah', id);
+      }
+    };
+
     /**
      * Premium created By @SlavyanDesu
      */
-    
+    premium.expiredCheck(_premium);
 
     if (!isGroupMsg && command.startsWith('!')) console.log(color('[CMD]', 'green'), time, color(msgs(command)), 'from', color(pushname));
     if (isGroupMsg && command.startsWith('!')) console.log(color('[CMD]', 'green'), time, color(msgs(command)), 'from', color(pushname), 'in', color(formattedTitle));
@@ -404,13 +526,13 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
       break
       case prefix + 'siapakah':
         if (game.isCkl(from, ckl)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
-	data = fs.readFileSync('./lib/database/siapakah.json');
-        list = JSON.parse(data);
-        random = Math.floor(Math.random() * list.length);
-        let v = list[random]
-        const petunjuk = v.jawaban.replace(/[aiueoAIUEO]/gi, '_')
+	var data = fs.readFileSync('./lib/database/siapakah.json');
+        var list = JSON.parse(data);
+        vae random = Math.floor(Math.random() * list.length);
+        var v = list[random]
+        var petunjuk = v.jawaban.replace(/[aiueoAIUEO]/gi, '_')
         await Senko.reply(from, `*Soal :*\n${v.soal}\n*Clue :* ${petunjuk}\n\nWaktu : ${gamewaktu}s`, id)
-	let anih = v.jawaban.toLowerCase()
+	var anih = v.jawaban.toLowerCase()
         game.addckl(from, anih, gamewaktu, ckl)
       break
       case prefix+'premium':
@@ -468,6 +590,91 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	  listPremi += `${i + 1}. wa.me/${premium.getAllPremiumUser(_premium)[i].replace('@c.us', '')}\n➸ *Name*: ${arrayPremi[i].pushname}\n➸ *Expired*: ${checkExp.days} day(s) ${checkExp.hours} hour(s) ${checkExp.minutes} minute(s)\n\n`
 	}
 	await Senko.reply(from, listPremi, id)
+      break
+      case prefix + 'tebakgambar':
+	if (game.isCkl(from, teg)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	var data = fs.readFileSync('./lib/database/tebakgambar.json');
+	var list = JSON.parse(data);
+	var random = Math.floor(Math.random() * list.length);
+	var p = list[random]
+	var gamewaktu = 60
+	await Senko.sendFileFromUrl(from, p.img, 'tebakgambar.jpg', `*Waktu : ${gamewaktu}s`, id)
+	var anh = p.jawaban.toLowerCase()
+	game.addckl(from, anh, gamewaktu, teg)
+      break
+      case prefix + 'caklontong':
+	if (game.isCkl(from, clo)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/caklontong.json');
+	list = JSON.parse(data);
+	random = Math.floor(Math.random() * list.length);
+	p = list[random]
+	panunjuk = p.jawaban.replace(/[aiueoAIUEO]/gi, '_')
+	await Senko.reply(from, `*Soal :*\n${p.soal}\n*Clue :* ${panunjuk}\n\nWaktu : ${gamewaktu}s`, id)
+	anh = p.jawaban.toLowerCase()
+	desc = p.deskripsi.toLowerCase()
+	game.addCklWithDesc(from, anh, gamewaktu, desc, clo)
+      break
+      case prefix + 'tekateki':
+	if (game.isCkl(from, ttk)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/tekateki.json');
+	list = JSON.parse(data);
+	random = Math.floor(Math.random() * list.length);
+	p = list[random]
+	await Senko.reply(from, `*Soal :*\n${p.soal}\n\n*Waktu :* ${gamewaktu}s`, id)
+	anh = p.jawaban.toLowerCase()
+	game.addckl(from, anh, gamewaktu, ttk)
+      break
+      case prefix + 'tebaklirik':
+	if (game.isCkl(from, tel)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/tebaklirik.json');
+	list = JSON.parse(data);
+	random = Math.floor(Math.random() * list.length);
+	p = list[random]
+	await Senko.reply(from, `*Soal :*\n${p.soal}\n\nWaktu : ${gamewaktu}s`, id)
+	anh = p.jawaban.toLowerCase()
+	game.addckl(from, anh, gamewaktu, tel)
+      break
+      case prefix + 'tebakkata':
+	if (game.isCkl(from, tkk)) return await Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/tebakkata.json')
+	list = JSON.parse(data)
+	var random = Math.floor(Math.random() * list.length)
+	var v = list[random]
+	await Senko.reply(from, `*Soal :*\n${v.soal}\n\nWaktu : ${gamewaktu}s`, id)
+	var anih = v.jawaban.toLowerCase()
+	game.addckl(from, anih, gamewaktu, tkk)
+      break
+      case prefix + 'tebakkalimat':
+	if (game.isCkl(from, tek)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/tebakkalimat.json')
+	list = JSON.parse(data)
+	random = Math.floor(Math.random() * list.length)
+	var v = list[random]
+	await Senko.reply(from, `*Soal :*\n${v.soal}\n\nWaktu : ${gamewaktu}s`, id)
+	var anih = v.jawaban.toLowerCase()
+	game.addckl(from, anih, gamewaktu, tek)
+      break
+      case prefix + 'susunkata':
+	if (game.isCkl(from, suk)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id)
+	data = fs.readFileSync('./lib/susunkata.json')
+	list = JSON.parse(data)
+	random = Math.floor(Math.random() * list.length)
+	var v = list[random]
+	var petunjuk = v.tipe
+	await Senko.reply(from, `*Soal :*\n${v.soal}\n*Tipe :* ${petunjuk}\n\nWaktu : ${gamewaktu}s`, id)
+	var anih = v.jawaban.toLowerCase()
+	game.addckl(from, anih, gamewaktu, suk)
+      break
+      case prefix+'bc':
+      case prefix + 'broadcast':
+	if (!isOwner) return await Senko.reply(from, ind.ownerOnly(), id)
+	if (args.length === 0) return await Senko.reply(from, 'Hmm', id)
+	const chats = await Senko.getAllChatIds()
+	for (let bcs of chats) {
+	  let cvk = await Senko.getChatById(bcs)
+	  if (!cvk.isReadOnly) await Senko.sendText(bcs, `${q}\n\n_Broadcasted message_`)
+	}
+	await Senko.reply(from, 'Selesai!', id)
       break
     }
   } catch (err) {
