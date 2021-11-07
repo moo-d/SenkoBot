@@ -120,3 +120,9 @@ exports.onlyOwner = () => {
 exports.gameNotFinished = (game) => {
   return `The *${game}* is still unfinished`
 }
+exports.unknownCmd = (prefix, pushname, args) => {
+  return `┏┅ *≡ ✗ SENKO INFO ✗*
+Sorry ${pushname}, command *${args[0]}* not registered in *${prefix}menu*!
+┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
+`
+}
