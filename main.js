@@ -676,8 +676,13 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
 	}
 	await Senko.reply(from, 'Selesai!', id)
       break
-    }
+    default:
+      if (args[0].startsWith(prefix)) {
+        await Senko.reply(from, mess.unknownCmd(pushname, args), id);
+        console.log(color('[CLIENT] Command not found', 'red'));
+      }
+    };
   } catch (err) {
     console.error(color('[ERROR]', 'red'), err);
   }
-}
+};
