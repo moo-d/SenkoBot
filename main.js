@@ -19,7 +19,7 @@ let mess = ind;
 
 ckl = [];
 suk = [];
-ckl = [];
+clo = [];
 tek = [];
 tkk = [];
 teg = [];
