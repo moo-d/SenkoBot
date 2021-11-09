@@ -538,7 +538,7 @@ module.exports = msgHandler = async (Senko = new Client, message) => {
         if (game.isCkl(from, ckl)) return Senko.reply(from, `Masih ada soal yang belum di selesaikan`, id);
 	var data = fs.readFileSync('./lib/database/siapakah.json');
         var list = JSON.parse(data);
-        vae random = Math.floor(Math.random() * list.length);
+        var random = Math.floor(Math.random() * list.length);
         var v = list[random]
         var petunjuk = v.jawaban.replace(/[aiueoAIUEO]/gi, '□');
         await Senko.reply(from, `*Soal :*\n${v.soal}\n*Clue :* ${petunjuk}\n\nWaktu : ${gamewaktu}s\n*Note* : Reply pertanyaan ini untuk menjawab.`, id);
