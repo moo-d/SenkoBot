@@ -124,3 +124,6 @@ Maaf ${pushname}, perintah *${args[0]}* tidak ada di dalam *${prefix}menu*!
 exports.gameNotFinished = (game) => {
   return `*${game}* masih ada yang belum diselesaikan.`
 }
+exports.gameLevelingOff = (game) => {
+  return `Untuk bermain *${game}*, Kamu perlu mengaktifkan leveling!`
+}
