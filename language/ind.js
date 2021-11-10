@@ -45,7 +45,8 @@ _Halo ${pushname}👋_ ●ω●
 ⊙ _${prefix}cekpremium_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ OWNER ✗*
-⊙ _${prefix}premium [add/del] [@tag/628xxx]
+⊙ _${prefix}premium [add/del] [@tag/628xxx]_
+⊙ _${prefix}bc [text]_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 `
 }
