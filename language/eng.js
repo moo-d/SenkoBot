@@ -32,6 +32,13 @@ _Hello ${pushname}👋_ ●ω●
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ GAME ✗*
 ⊙ _${prefix}siapakah_
+⊙ _${prefix}tebakgambar_
+⊙ _${prefix}tekateki_
+⊙ _${prefix}tebaklirik_
+⊙ _${prefix}caklontong_
+⊙ _${prefix}tebakkata_
+⊙ _${prefix}tebakkalimat_
+⊙ _${prefix}susunkata_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ INFO ✗*
 ⊙ _${prefix}premiumlist_
