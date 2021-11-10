@@ -12,7 +12,7 @@ _Halo ${pushname}👋_ ●ω●
 ⊙ _${prefix}stickergif_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ FUN ✗*
-⊙ _${prefix}jokes
+⊙ _${prefix}jokes_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ DOWNLOADER ✗*
 ⊙ _${prefix}ytmp3 [url]_
@@ -32,6 +32,13 @@ _Halo ${pushname}👋_ ●ω●
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ GAME ✗*
 ⊙ _${prefix}siapakah_
+⊙ _${prefix}tebakgambar_
+⊙ _${prefix}tekateki_
+⊙ _${prefix}tebaklirik_
+⊙ _${prefix}caklontong_
+⊙ _${prefix}tebakkata_
+⊙ _${prefix}tebakkalimat_
+⊙ _${prefix}susunkata_
 ┗┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅
 ┏┅ *≡ ✗ INFO ✗*
 ⊙ _${prefix}listpremium_
