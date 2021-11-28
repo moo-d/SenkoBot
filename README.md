@@ -27,7 +27,7 @@
     <img title="watchers" src="https://img.shields.io/github/watchers/moo-d/SenkoBot">
   </a>
   <a href="/">
-    <img title="MAINTENED" src="https://img.shields.io/badge/maintened%3F-yes-brightgreen">
+    <img title="MAINTENED" src="https://img.shields.io/badge/maintened%3F-on%20hold-yellow">
   </a>
   <a href="/">
     <img title="node" src="https://img.shields.io/badge/node->=12.20.2-brightgreen"
